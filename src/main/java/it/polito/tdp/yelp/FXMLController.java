@@ -81,8 +81,19 @@ public class FXMLController {
     @FXML
     void doUtenteSimile(ActionEvent event) {
     	User u=cmbUtente.getValue();
+    	
+    	if(u==null) {
+    		txtResult.setText("Devi selezionare un utente dopo aver creato il grafo!");
+    		return;
+    	}
+    	
     	List<User> vicini=model.utentiPiuSimili(u);
-    	txtResult.setText(vicini.toString());
+    	
+    	txtResult.setText("Utenti più vicini a "+u+"\n\n");
+    	for(User u2: vicini) {
+    		txtResult.setText(u2.toString()+"\n");
+    	}
+    	
 
     }
     
